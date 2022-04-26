@@ -1,4 +1,4 @@
-package web.dao.rowmappers;
+package database.rowmappers;
 
 import org.springframework.jdbc.core.RowMapper;
 

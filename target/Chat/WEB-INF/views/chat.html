@@ -1,21 +1,32 @@
 <!DOCTYPE html>
-<html lang="en"  xmlns:th="http://www.thymeleaf.org">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
-    <meta charset="UTF-8">
     <title>Chat</title>
 </head>
 <body>
+<meta charset="UTF-8">
 <div th:each="message:${messages}">
-    <a style="color:red" th:text="${message.getAuthor()}"></a>
+    <a style="color:red" th:text="${message.getAuthor()}" th:href="@{/profile?id={id}(id=${message.getId()})}"></a>
     :
     <a th:text="${message.getText()}"></a>
 </div>
 
-<form th:method="post" th:action="@{/chat}" th:object="${message}">
+<form th:method="patch" th:action="@{/chat}" th:object="${message}">
     <label for="message">Write your message</label>
     <input type="text" th:field="*{text}" id="message" autofocus/>
     <input type="submit" value="send"/>
 </form>
+
+<hr>
+Online:
+<br>
+<div th:each="people:${online}">
+    <a style="color: blue" th:text="${people.getName()}"></a>
+</div>
+<hr>
+<a href="/exit">exit</a>
+
+<a href="/profile?id=4"> vlad</a>
 
 </body>
 </html>

@@ -5,11 +5,20 @@
     <title>Join the chat</title>
 </head>
 <body>
+<meta charset="UTF-8">
+
+<p style="color: red" th:text="${error.getText()}">Val</p>
+
 <form th:method="post" th:action="@{/enter}" th:object="${person}">
-    <label for="name">Enter your name</label>
+    <label for="name">user name</label>
     <input type="text" th:field="*{name}" id="name"/>
-    <input type="submit" value="join"/>
-    <!--div style="color: red" th:if="${#fields.hasErrors('name')}" th:onerror="*{name}"></-div-->
+    <br>
+    <br>
+    <label for="password">password  </label>
+    <input type="password" th:field="*{password}" id ="password">
+    <input type="submit" value="enter"/>
 </form>
+
+<a href="/register">register</a>
 </body>
 </html>

@@ -1,15 +1,26 @@
-package web.models;
+package web.models.messages;
 
-import java.sql.Time;
-import java.time.LocalTime;
+import web.models.users.Person;
+
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 public class Message {
     private String text;
-    private Time time;
+    private Date time;
+    private int id;
     private String author;
 
-    public void setTime(Time time) {
+    public void setTime(Date time) {
         this.time = time;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     public Message() {
@@ -20,7 +31,7 @@ public class Message {
         return text;
     }
 
-    public Time getTime() {
+    public Date getTime() {
         return time;
     }
 
@@ -29,8 +40,8 @@ public class Message {
     }
 
     public void setTime() {
-        var localTime = LocalTime.now();
-        this.time = Time.valueOf(localTime);
+        SimpleDateFormat formatter= new SimpleDateFormat("yyyy-MM-dd 'at' HH:mm:ss z");
+        time = new Date(System.currentTimeMillis());
     }
 
     public String getAuthor() {
